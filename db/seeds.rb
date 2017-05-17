@@ -3,5 +3,5 @@
 end
 puts "-- Added 2 users to your database"
 
-puts adding own user
+puts #adding own user
 User.create!(email: "alexjabf@gmail.com", password: 'secret123')
