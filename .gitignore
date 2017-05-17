@@ -1,0 +1,40 @@
+/lib/backups
+config/development.sphinx.conf
+config/production.sphinx.conf
+config/sphinx.yml
+log/development.sphinx.pid
+log/production.sphinx.pid
+config/production.sphinx.conf 
+config/sphinx.yml 
+log/.production.searchd.log.swo
+db/sphinx/
+config/database.yml
+.env
+#Ignore bundler config
+/.bundle
+
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+
+# Ignore folders where avatar images are stored in the proyect.
+/avatars
+/public/system
+/public/assets
+/vendor/bundle
+
+# Ignore this MacOs file.
+.DS_Store
+
+# Ignore the RubyMine project directory.
+/.idea
+
+# Ignore the production.rb environment configuration file
+
+# Miscellaneous
+public/inspectio
+
+
+nbproject/*
