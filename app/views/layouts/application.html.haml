@@ -17,6 +17,7 @@
         .panel.panel-primary
           .panel-heading="#{action_name} new #{controller_name}".titlecase
           = flash_message
-          .panel-body= yield
-          = render 'partials/admin/action_links' if show_action_links?
+          .panel-body
+            = yield
+            = render 'partials/admin/action_links' if show_action_links?
 

@@ -1,40 +1,40 @@
 .action_links
   - if action_name == 'new' or action_name == 'create'
     - if can? :index, to_model(get_controller_name)
-      = link_to eval("#{get_controller_name}_path"), data: {disable_with: t('actions.returning',  model: t("activerecord.models.#{get_controller_name}").titlecase)}, title: t('actions.return_to',  model: t("activerecord.models.#{get_controller_name.pluralize}")), class: 'btn btn-xs btn-primary' do
+      = link_to eval("#{get_controller_name}_path"), class: 'btn btn-md btn-primary' do
         %i.fa.fa-arrow-circle-left
-        = t('actions.return_to',  model: t("activerecord.models.#{get_controller_name.pluralize}"))
+        Back
   - elsif action_name == 'index'
     - if can? :new, to_model(get_controller_name)
-      = link_to eval("new_#{get_controller_name.singularize}_path"), data: {disable_with: t('actions.creating',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase)}, title: t('actions.new',  model: t("activerecord.models.#{get_controller_name.singularize}")), class: 'btn btn-xs btn-success' do
+      = link_to eval("new_#{get_controller_name.singularize}_path"), class: 'btn btn-md btn-success' do
         %i.fa.fa-plus
-        = t('actions.new',  model: t("activerecord.models.#{get_controller_name.singularize}"))
+        New
   - elsif action_name == 'edit' or action_name == 'update' or action_name == 'show'
     - if can? :index, to_model(get_controller_name)
-      = link_to eval("#{get_controller_name}_path"), data: {disable_with: t('actions.returning',  model: t("activerecord.models.#{get_controller_name}").titlecase)}, title: t('actions.return_to',  model: t("activerecord.models.#{get_controller_name.pluralize}")), class: 'btn btn-xs btn-primary' do
+      = link_to eval("#{get_controller_name}_path"), class: 'btn btn-md btn-primary' do
         %i.fa.fa-arrow-circle-left
-        = t('actions.return_to',  model: t("activerecord.models.#{get_controller_name.pluralize}"))
+        Back
     - if can? :new, to_model(get_controller_name)
-      = link_to eval("new_#{get_controller_name.singularize}_path"), data: {disable_with: t('actions.creating',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase)}, title: t('actions.new',  model: t("activerecord.models.#{get_controller_name.singularize}")), class: 'btn btn-xs btn-success' do
+      = link_to eval("new_#{get_controller_name.singularize}_path"), class: 'btn btn-md btn-success' do
         %i.fa.fa-plus
-        = t('actions.new',  model: t("activerecord.models.#{get_controller_name.singularize}"))
+        New
     - if get_controller_name == 'users' and @user.id != current_user.id
       - if can? :edit, User
-        = link_to edit_admin_user_path(@user), data: {disable_with: t('actions.editing',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase)}, title: t('actions.edit',  model: t("activerecord.models.#{get_controller_name.singularize}")), class: 'btn btn-xs btn-warning' do
+        = link_to edit_admin_user_path(@user), class: 'btn btn-md btn-warning' do
           %i.fa.fa-pencil
-          = t('actions.edit',  model: t("activerecord.models.#{get_controller_name.singularize}"))
+          Edit
     - else
       - if can? :edit, to_model(get_controller_name) and action_name != 'edit' and action_name != 'update'
-        = link_to eval("edit_#{get_controller_name.singularize}_path(@#{get_controller_name.singularize})"), data: {disable_with: t('actions.editing',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase)}, title: t('actions.edit',  model: t("activerecord.models.#{get_controller_name.singularize}")), class: 'btn btn-xs btn-warning' do
+        = link_to eval("edit_#{get_controller_name.singularize}_path(@#{get_controller_name.singularize})"), class: 'btn btn-md btn-warning' do
           %i.fa.fa-pencil
-          = t('actions.edit',  model: t("activerecord.models.#{get_controller_name.singularize}"))
+          Edit
     - if get_controller_name == 'users' and @user.id != current_user.id
       - if can? :destory, to_model(get_controller_name) and @user.id != current_user.id
-        = link_to eval("@#{get_controller_name.singularize}"), method: :delete, data: {disable_with: t('actions.deleting',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase), confirm: t('actions.are_you_sure?', model: t("activerecord.models.#{get_controller_name.singularize}").downcase) }, title: t('actions.destroy',  model: t("activerecord.models.#{get_controller_name.singularize}")), class: 'btn btn-xs btn-danger' do
+        = link_to eval("@#{get_controller_name.singularize}"), method: :delete , class: 'btn btn-md btn-danger' do
           %i.fa.fa-trash
-          = t('actions.destroy',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase)
+          Edit
     - elsif get_controller_name != 'users'
       - if can? :destory, to_model(get_controller_name)
-        = link_to eval("@#{get_controller_name.singularize}"), method: :delete, data: {disable_with: t('actions.deleting',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase), confirm: t('actions.are_you_sure?', model: t("activerecord.models.#{get_controller_name.singularize}").downcase) }, title: t('actions.destroy',  model: t("activerecord.models.#{get_controller_name.singularize}")), class: 'btn btn-xs btn-danger' do
+        = link_to eval("@#{get_controller_name.singularize}"), method: :delete , class: 'btn btn-md btn-danger' do
           %i.fa.fa-trash
-          = t('actions.destroy',  model: t("activerecord.models.#{get_controller_name.singularize}").titlecase)
+          Destroy

@@ -90,4 +90,20 @@ module ApplicationHelper
     'Error on to_controller_name: ' + model.to_s
   end
   
+  def have_any_index_action?(model)
+    if can? :show, to_model(model) or can? :edit, to_model(model) or can? :destroy, to_model(model)
+      return true
+    else
+      return false
+    end
+  end
+  
+  def has_action?(controller, action)
+    controller = controller.nil? ? controller_name : to_controller_name(controller)
+    "#{controller}_controller".camelize.constantize.new.respond_to?(action)
+  rescue
+    false
+  end
+  
+  
 end

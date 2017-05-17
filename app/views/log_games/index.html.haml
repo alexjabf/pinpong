@@ -1,6 +1,4 @@
-%h1 Listing Log Games
-
-%table
+%table.table.table-striped.table-bordered
   %thead
     %tr
       %th Date played
@@ -8,22 +6,16 @@
       %th Opponent
       %th Your score
       %th Opponent score
-      %th
-      %th
-      %th
+      %th Acction Links
 
   %tbody
     - @log_games.each do |log_game|
+      - @model = log_game
       %tr
         %td= log_game.date_played
-        %td= log_game.user
-        %td= log_game.opponent
+        %td= log_game.user.name
+        %td= log_game.opponent.name
         %td= log_game.your_score
         %td= log_game.opponent_score
-        %td= link_to 'Show', log_game
-        %td= link_to 'Edit', edit_log_game_path(log_game)
-        %td= link_to 'Destroy', log_game, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Log game', new_log_game_path
+        - if have_any_index_action?(controller_name)
+          %td= render 'partials/admin/index_links'

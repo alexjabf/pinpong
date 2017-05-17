@@ -1,9 +1,12 @@
 class LogGamesController < ApplicationController
   before_action :set_log_game, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource except: [:create]
 
   # GET /log_games
   def index
-    @log_games = LogGame.all
+    @index_controller_name = 'log_games'
+    @log_games = LogGame.where(user_id: current_user.id)
   end
 
   # GET /log_games/1
