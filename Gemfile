@@ -20,3 +20,4 @@ end
 gem 'nokogiri', '1.6.6.3'
 gem 'pg'
 gem 'haml-rails'
+gem 'faker'
