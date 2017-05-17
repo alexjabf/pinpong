@@ -1,0 +1,12 @@
+= simple_form_for(@log_game) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :date_played, as: :datetime, order: [:day, :month, :year]
+    = f.association :user
+    = f.association :opponent
+    = f.input :your_score, hint: 'Score difference must be not more or less than two points.'
+    = f.input :opponent_score, hint: 'Score difference must be not more or less than two points.'
+
+  .form-actions
+    = f.button :submit

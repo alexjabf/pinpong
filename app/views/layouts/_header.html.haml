@@ -10,7 +10,7 @@
       %a.navbar-brand{:href => "/"} Pingpong
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      = link_to 'Log Game', '/log', class: 'btn btn-success navbar-btn'
+      = link_to 'Log Game', new_log_game_path, class: 'btn btn-success navbar-btn'
       %ul.nav.navbar-nav
         - if user_signed_in?
           %li= link_to 'Leadboard', root_path

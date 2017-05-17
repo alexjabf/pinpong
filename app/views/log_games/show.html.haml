@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Date played:
+  = @log_game.date_played
+%p
+  %b User:
+  = @log_game.user.name
+%p
+  %b Opponent:
+  = @log_game.opponent.name
+%p
+  %b Your score:
+  = @log_game.your_score
+%p
+  %b Opponent score:
+  = @log_game.opponent_score
+
+= link_to 'Edit', edit_log_game_path(@log_game)
+\|
+= link_to 'Back', log_games_path
