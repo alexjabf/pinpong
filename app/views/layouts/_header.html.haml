@@ -13,11 +13,13 @@
       = link_to 'Log Game', new_log_game_path, class: 'btn btn-success navbar-btn'
       %ul.nav.navbar-nav
         - if user_signed_in?
-          %li= link_to 'Leadboard', root_path
+          %li= link_to 'Leadboard', log_games_leadboard_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
-            = link_to "History", log_games_path
+            = link_to "Games History", log_games_path
+          %li
+            = link_to "My History Games", log_games_my_history_path
           %li= link_to 'Logout', destroy_user_session_path, method: :delete
         - else
           %li= link_to 'Login', new_user_session_path

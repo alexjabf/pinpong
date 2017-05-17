@@ -7,6 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user
       can [:index, :new, :create, :destroy, :show], LogGame, id: user.id
+      can [:leadboard, :my_history], LogGame
     end
     #
     # The first argument to `can` is the action you are giving the user

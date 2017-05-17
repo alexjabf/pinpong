@@ -1,0 +1,19 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Won?
+      %th Date played
+      %th User
+      %th Opponent
+      %th Your score
+      %th Opponent score
+
+  %tbody
+    - @log_games.each do |log_game|
+      %tr
+        %td= log_game.log_game_won_by_you ? 'YES' : 'NO'
+        %td= log_game.date_played
+        %td= log_game.user.name
+        %td= log_game.opponent.name
+        %td= log_game.your_score
+        %td= log_game.opponent_score

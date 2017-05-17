@@ -1,5 +1,5 @@
 class LogGame < ActiveRecord::Base
-  belongs_to :owner, foreign_key: :owner_id, class_name: 'User'
+  belongs_to :user
   belongs_to :opponent, foreign_key: :opponent_id, class_name: 'User'
   validates :date_played, :user_id, :your_score, :opponent_id, :opponent_score, presence: true
   validate :get_correct_score_margin, if:  (:your_score? and :opponent_score?)

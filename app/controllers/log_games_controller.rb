@@ -2,6 +2,14 @@ class LogGamesController < ApplicationController
   before_action :set_log_game, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource except: [:create]
+  
+  def my_history
+    @log_games = LogGame.where(user_id: current_user.id).order('log_game_won_by_you DESC').uniq
+  end
+  
+  def leadboard
+
+  end
 
   # GET /log_games
   def index
@@ -52,13 +60,13 @@ class LogGamesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_log_game
-      @log_game = LogGame.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_log_game
+    @log_game = LogGame.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def log_game_params
-      params.require(:log_game).permit(:date_played, :user_id, :opponent_id, :your_score, :opponent_score, :log_game_won_by_you)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def log_game_params
+    params.require(:log_game).permit(:date_played, :user_id, :opponent_id, :your_score, :opponent_score, :log_game_won_by_you)
+  end
 end
