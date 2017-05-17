@@ -27,6 +27,9 @@ class LogGamesController < ApplicationController
     @log_game = LogGame.new(log_game_params)
 
     if @log_game.save
+      if @log_game.your_score > @log_game.opponent_score
+        @log_game_won_by_you = true
+      end
       redirect_to @log_game, notice: 'Log game was successfully created.'
     else
       render :new
@@ -56,6 +59,6 @@ class LogGamesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def log_game_params
-      params.require(:log_game).permit(:date_played, :user_id, :opponent_id, :your_score, :opponent_score)
+      params.require(:log_game).permit(:date_played, :user_id, :opponent_id, :your_score, :opponent_score, :log_game_won_by_you)
     end
 end

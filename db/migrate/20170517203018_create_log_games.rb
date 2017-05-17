@@ -6,6 +6,7 @@ class CreateLogGames < ActiveRecord::Migration
       t.references :opponent, index: true, foreign_key: true
       t.integer :your_score
       t.integer :opponent_score
+      t.boolean :log_game_won_by_you, null: false, default: false
 
       t.timestamps null: false
     end
